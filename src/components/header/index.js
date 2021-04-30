@@ -6,7 +6,7 @@ export default function index() {
     <>
       <header>
         <Link className="logo" to="/">AppFilmes</Link>
-        <Link className="favoritos" to="/">Favoritos</Link>
+        <Link className="favoritos" to="/favoritos">Favoritos</Link>
       </header>
     </>
   )

@@ -24,6 +24,26 @@ export default function Filme() {
     }
   }, [history, id]);
 
+  const salvaFilme = () => {
+    const minhaLista = localStorage.getItem('filmes', 'salvo');
+
+    let filmesSalvos = JSON.parse(minhaLista) || [];
+    const hasFilmes = filmesSalvos.some((filmesSalvos) => filmesSalvos.id === filmes.id);
+
+    if (hasFilmes) {
+      alert('Voce ja possui esse filme ');
+
+      return;
+    }
+
+    filmesSalvos.push(filmes);
+    localStorage.setItem('filmes', JSON.stringify(filmesSalvos));
+
+    alert('filmes salvo com sucesso')
+
+  }
+
+
   if (loading) {
     return (
       <div className="carregando">
@@ -31,6 +51,7 @@ export default function Filme() {
       </div>
     )
   }
+
   return (
     <section className="details-movies">
 
@@ -40,7 +61,7 @@ export default function Filme() {
       <h4>Sinopse</h4>
       <p>{filmes.sinopse}</p>
       <div className="buttons">
-        <button>Add aos Favoritos</button>
+        <button onClick={salvaFilme}>Favoritos</button>
         <button>
           <a target="blank" href={`https://youtube.com/results?search_query=${filmes.nome} Trailer`}>
             Trailler
