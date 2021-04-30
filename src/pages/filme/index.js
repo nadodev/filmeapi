@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import api from '../../services/api'
 import './style.scss'
+import { toast } from 'react-toastify'
 export default function Filme() {
   const { id } = useParams();
   const history = useHistory();
@@ -31,7 +32,7 @@ export default function Filme() {
     const hasFilmes = filmesSalvos.some((filmesSalvos) => filmesSalvos.id === filmes.id);
 
     if (hasFilmes) {
-      alert('Voce ja possui esse filme ');
+      toast.error('Voce ja possui esse filme ');
 
       return;
     }
@@ -39,7 +40,7 @@ export default function Filme() {
     filmesSalvos.push(filmes);
     localStorage.setItem('filmes', JSON.stringify(filmesSalvos));
 
-    alert('filmes salvo com sucesso')
+    toast.success('filmes salvo com sucesso')
 
   }
 
