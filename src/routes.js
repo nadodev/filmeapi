@@ -4,6 +4,7 @@ import Header from './components/header/'
 import Home from './pages/homes'
 import Filme from './pages/filme'
 import Favoritos from './pages/favoritos'
+import Error from './pages/erro'
 export default function routes() {
   return (
     <BrowserRouter>
@@ -12,7 +13,7 @@ export default function routes() {
         <Route exact path="/" component={Home} />
         <Route exact path="/filme/:id" component={Filme} />
         <Route exact path="/favoritos" component={Favoritos} />
-        <Route path="*" component={Filme} />
+        <Route path="*" component={Error} />
       </Switch>
     </BrowserRouter>
   )
